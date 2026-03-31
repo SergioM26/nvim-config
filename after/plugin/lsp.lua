@@ -13,6 +13,7 @@ local on_attach = function(_, bufnr)
   bufmap('gI', vim.lsp.buf.implementation)
   bufmap('<leader>D', vim.lsp.buf.type_definition)
   bufmap('K', vim.lsp.buf.hover)
+  bufmap('<leader>e', vim.diagnostic.open_float)
 
   -- Telescope LSP integrations
   bufmap('gr', require('telescope.builtin').lsp_references)
@@ -29,7 +30,7 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
--- Lua Language Server
+-- Lua 
 vim.lsp.config('luals', {
   cmd = { 'lua-language-server' },
   filetypes = { 'lua' },
@@ -51,10 +52,17 @@ vim.lsp.config('luals', {
   on_attach = on_attach,
   capabilities = capabilities,
 })
-
--- Enable the LSP servers
 vim.lsp.enable('luals')
 
--- Load additional LSP servers (optional)
--- Uncomment the next line to enable additional LSP servers
-require('lsp-servers').setup_additional_servers()
+-- C/C++
+vim.lsp.config('clangd', {
+	cmd = { 'clangd' },
+	filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
+	root_markers = { '.clangd', '.clang-tidy', '.clang-format', 'compile_commands.json', 'compile_flags.txt', '.git' },
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+vim.lsp.enable('clangd')
+
+-- BASH
+vim.lsp.enable 'bashls'

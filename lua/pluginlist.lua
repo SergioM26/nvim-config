@@ -31,9 +31,24 @@ return {
 		},
 	},
 
+	{
+		"mason-org/mason.nvim",
+		opts = {}
+	},
+
+	{
+		'altermo/ultimate-autopair.nvim',
+		event={'InsertEnter','CmdlineEnter'},
+		branch='v0.6', --recommended as each new version will have breaking changes
+		opts={
+			--Config goes here
+		}
+	},
+
 	-- parser (analizador)
 	{
 		'nvim-treesitter/nvim-treesitter',
+		lazy = false,
 		build = ':TSUpdate',
 	},
 

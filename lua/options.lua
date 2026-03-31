@@ -14,11 +14,3 @@ vim.o.updatetime = 300
 vim.o.termguicolors = true
 
 vim.o.mouse = 'a'
-vim.keymap.set("i", '"', '""<Left>')
-vim.keymap.set("i", "'", "''<Left>")
-vim.keymap.set("i", "(", "()<Left>")
-vim.keymap.set("i", "[", "[]<Left>")
-vim.keymap.set("i", "{", "{}<Left>")
-vim.keymap.set("i", "{<CR>", "{<CR>}<ESC>O")
-vim.keymap.set("i", "{;", "{<CR>};<ESC>O")
-
