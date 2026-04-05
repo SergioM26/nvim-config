@@ -1,4 +1,4 @@
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter').setup {
     ensure_installed = { 'vim', 'vimdoc', 'lua', 'cpp','qmljs','javascript','typescript','php'},
 
     auto_install = false,

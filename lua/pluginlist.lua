@@ -10,10 +10,10 @@ return {
 	},
 
 	{
-		"ellisonleao/gruvbox.nvim",
+		"shaunsingh/nord.nvim",
 		priority = 1000,
 		config = function()
-			vim.cmd("colorscheme gruvbox")
+			vim.cmd("colorscheme nord")
 		end
 	},
 
@@ -31,9 +31,24 @@ return {
 		},
 	},
 
+	{
+		"mason-org/mason.nvim",
+		opts = {}
+	},
+
+	{
+		'altermo/ultimate-autopair.nvim',
+		event={'InsertEnter','CmdlineEnter'},
+		branch='v0.6', --recommended as each new version will have breaking changes
+		opts={
+			--Config goes here
+		}
+	},
+
 	-- parser (analizador)
 	{
 		'nvim-treesitter/nvim-treesitter',
+		lazy = false,
 		build = ':TSUpdate',
 	},
 
@@ -43,7 +58,6 @@ return {
 		dependencies = { 'nvim-lua/plenary.nvim' }
 	},
 
-	--
 	{
 		'nvim-telescope/telescope-fzf-native.nvim',
 		build = 'make',
@@ -64,7 +78,7 @@ return {
 		config = function()
 			require("lualine").setup({
 				icons_enabled = true,
-				theme = 'auto',
+				theme = 'nord',
 			})
 		end,
 	},
@@ -75,7 +89,39 @@ return {
 
 	-- funny
 	{
-		"theprimeagen/vim-be-good"
-	}
+		"theprimeagen/vim-be-good",
+        cmd = "VimBeGood"
+	},
+
+    -- Competitive Programming
+    {
+        'xeluxee/competitest.nvim',
+        dependencies = 'MunifTanjim/nui.nvim',
+        -- config = function() require('competitest').setup() end,
+    },
+
+    {
+        "kawre/leetcode.nvim",
+        build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
+        dependencies = {
+            -- include a picker of your choice, see picker section for more details
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+        },
+        opts = {
+             injector = { ---@type table<lc.lang, lc.inject>
+                ["cpp"] = {
+                    imports = function()
+                        -- return a different list to omit default imports
+                        return { "#include <bits/stdc++.h>", "using namespace std;" }
+                    end,
+                    after = "int main() {}",
+                },
+             ---@type string
+            arg = "leetcode.nvim"
+            },
+        },
+        cmd = "Leet"
+    }
 
 }
