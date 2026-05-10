@@ -113,7 +113,7 @@ require('competitest').setup {
 	companion_port = 27121,
 	receive_print_message = true,
 	start_receiving_persistently_on_setup = false,
-	template_file = "~/template.$(FEXT)",
+	template_file = "~/Templates/template.$(FEXT)",
 	evaluate_template_modifiers = true,
 	date_format = "%c",
 	received_files_extension = "cpp",
