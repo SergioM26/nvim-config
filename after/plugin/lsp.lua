@@ -66,3 +66,10 @@ vim.lsp.enable('clangd')
 
 -- BASH
 vim.lsp.enable 'bashls'
+
+-- vim.lsp.config('pythonlsp', {
+-- 	cmd = { 'pylsp' },
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
+-- })
+-- vim.lsp.enable 'pythonlsp'
